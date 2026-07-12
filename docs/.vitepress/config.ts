@@ -1,0 +1,94 @@
+import { defineConfig } from 'vitepress';
+
+const siteName = '飞书 Playbook';
+const siteDescription = '用飞书搭建高效协作系统的中文实战手册';
+const siteUrl = 'https://chendahuang.com/playbook/feishu/';
+
+function getPageUrl(relativePath: string) {
+  const path = relativePath
+    .replace(/(^|\/)index\.md$/, '$1')
+    .replace(/\.md$/, '');
+
+  return new URL(path, siteUrl).toString();
+}
+
+// 配置中文单页手册的标题、搜索和基础导航。
+export default defineConfig({
+  title: siteName,
+  description: siteDescription,
+  lang: 'zh-CN',
+  base: '/playbook/feishu/',
+  outDir: './.vitepress/dist/playbook/feishu',
+  cleanUrls: true,
+  lastUpdated: true,
+  sitemap: {
+    hostname: siteUrl
+  },
+  markdown: {
+    theme: {
+      light: 'github-light-high-contrast',
+      dark: 'github-dark-high-contrast'
+    }
+  },
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/playbook/feishu/favicon.svg' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: siteName }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'theme-color', content: '#3370ff' }]
+  ],
+  transformPageData(pageData) {
+    const canonicalUrl = getPageUrl(pageData.relativePath);
+    const title = pageData.title === siteName ? siteName : `${pageData.title} | ${siteName}`;
+    const description = String(pageData.frontmatter.description ?? siteDescription);
+
+    pageData.frontmatter.head ??= [];
+    pageData.frontmatter.head.push(
+      ['link', { rel: 'canonical', href: canonicalUrl }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:url', content: canonicalUrl }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: description }]
+    );
+  },
+  themeConfig: {
+    logo: '/favicon.svg',
+    nav: [
+      { text: '手册', link: '/' },
+      { text: '飞书开放平台', link: 'https://open.feishu.cn/' },
+      {
+        text: 'Playbooks',
+        items: [
+          { text: '全部 Playbook', link: 'https://chendahuang.com/playbooks/', target: '_self', noIcon: true },
+          { text: 'Cloudflare', link: 'https://chendahuang.com/playbook/cloudflare/', target: '_self', noIcon: true },
+          { text: 'macOS', link: 'https://chendahuang.com/playbook/macos/', target: '_self', noIcon: true },
+          { text: 'Codex', link: 'https://chendahuang.com/playbook/codex/', target: '_self', noIcon: true },
+          { text: '飞书', link: 'https://chendahuang.com/playbook/feishu/', target: '_self', noIcon: true }
+        ]
+      },
+      { text: '返回主站', link: 'https://chendahuang.com/', target: '_self', noIcon: true }
+    ],
+    search: {
+      provider: 'local'
+    },
+    outline: {
+      level: [2, 3],
+      label: '目录'
+    },
+    lastUpdated: {
+      text: '最后更新于'
+    },
+    editLink: {
+      pattern: 'https://github.com/realchendahuang/feishu-playbook/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页'
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/realchendahuang/feishu-playbook' }
+    ],
+    footer: {
+      message: '飞书 Playbook',
+      copyright: 'Content licensed under CC BY-SA 4.0'
+    }
+  }
+});

@@ -1,0 +1,43 @@
+{
+  "name": "feishu-playbook",
+  "version": "0.1.0",
+  "private": true,
+  "license": "CC-BY-SA-4.0",
+  "description": "飞书 Playbook：用飞书搭建高效协作系统的中文实战手册。",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "pnpm@10.28.1",
+  "scripts": {
+    "dev": "vitepress dev docs --host 127.0.0.1",
+    "start": "vitepress dev docs --host 127.0.0.1",
+    "build": "pnpm clean:dist && pnpm sync:readme && vitepress build docs && node scripts/finalize-dist.mjs",
+    "types": "wrangler types --include-runtime false",
+    "typecheck": "wrangler types --check --include-runtime false && tsc --noEmit",
+    "check": "pnpm build && pnpm typecheck",
+    "preview": "vitepress preview docs --host 127.0.0.1",
+    "clean:dist": "node scripts/clean-dist.mjs",
+    "sync:readme": "node scripts/sync-readme.mjs",
+    "deploy:quick": "node scripts/deploy.mjs",
+    "deploy": "pnpm check && wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/realchendahuang/feishu-playbook.git"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260710.1",
+    "@lucide/vue": "^1.24.0",
+    "typescript": "^7.0.2",
+    "vitepress": "^1.6.4",
+    "wrangler": "^4.110.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "workerd"
+    ]
+  }
+}

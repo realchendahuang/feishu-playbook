@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="飞书 Playbook">
+  <rect width="64" height="64" rx="12" fill="#3370ff"/>
+  <path fill="#ffffff" d="M32 14C22.06 14 14 22.06 14 32s8.06 18 18 18 18-8.06 18-18S41.94 14 32 14z"/>
+  <path fill="#3370ff" d="M38.5 22L25 33.5l5 5 13.5-11.5z"/>
+  <path fill="#3370ff" d="M25 33.5l5 5L38.5 22 25 33.5z"/>
+</svg>
