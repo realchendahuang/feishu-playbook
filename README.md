@@ -1,5 +1,13 @@
 # 飞书 Playbook
 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/realchendahuang/feishu-playbook?style=social)](https://github.com/realchendahuang/feishu-playbook)
+[![GitHub forks](https://img.shields.io/github/forks/realchendahuang/feishu-playbook?style=social)](https://github.com/realchendahuang/feishu-playbook/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/realchendahuang/feishu-playbook)](https://github.com/realchendahuang/feishu-playbook/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/realchendahuang/feishu-playbook/pulls)
+[![Follow @realchendahuang](https://img.shields.io/badge/Follow-%40realchendahuang-1DA1F2?logo=x&logoColor=white)](https://x.com/realchendahuang)
+
 从一件具体工作开始，把飞书真正用起来。按普通用户、个人开发者、团队负责人和 Agent 开发者的真实任务，搭建简报、会议、知识、Base、AI、自动化与开放平台工作流。
 
 在线阅读：[chendahuang.com/playbook/feishu](https://chendahuang.com/playbook/feishu/)
