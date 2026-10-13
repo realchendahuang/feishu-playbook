@@ -5,3 +5,5 @@ docs/.vitepress/dist/
 .DS_Store
 *.log
 temp/
+
+.cloudflare
